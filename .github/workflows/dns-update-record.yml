@@ -43,11 +43,12 @@ jobs:
               id: plan
               if: github.event_name == 'pull_request' || github.event_name == 'push'
               run: terraform plan -no-color -input=false
+              continue-on-error: true
             
             - uses: actions/github-script@v6
               if: github.event_name == 'pull_request'
               env:
-                  PLAN: ${{ steps.plan.outputs.stdout }}
+                 PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 script: |
