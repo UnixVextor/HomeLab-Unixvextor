@@ -19,7 +19,7 @@ resource "dns_a_record_set" "srv_prod_2" {
   ttl       = 3600
 }
 
-resource "dns_a_record_set" "wildcard_srv_prod_2" {
+resource "dns_a_record_set" "wild_card_srv_prod_2" {
   zone      = "home.unixvextor.com."
   name      = "*.srv-prod-2"
   addresses = ["10.10.30.250"]
