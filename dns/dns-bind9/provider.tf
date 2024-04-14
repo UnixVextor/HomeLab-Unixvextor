@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     dns = {
-      source = "hashicorp/dns"
+      source  = "hashicorp/dns"
       version = "3.4.0"
     }
   }
@@ -16,15 +16,15 @@ terraform {
 }
 
 variable "tsig_key" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 provider "dns" {
   update {
-    server = "10.10.30.249"
-    key_name = "rndc-key."
+    server        = "10.10.30.249"
+    key_name      = "rndc-key."
     key_algorithm = "hmac-sha256"
-    key_secret = var.tsig_key
+    key_secret    = var.tsig_key
   }
 }
