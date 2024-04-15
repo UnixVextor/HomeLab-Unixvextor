@@ -1,4 +1,6 @@
-dns/dns-bind9/.terraform
-dns/dns-bind9/terraform.tfstate
-dns/dns-bind9/terraform.tfstate.backup
-dns/dns-bind9/.terraform.lock.hcl
+**/.terraform
+**/.terraform.lock.hcl
+**/.terraform.tfstate.*
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/*.auto.tfvars
