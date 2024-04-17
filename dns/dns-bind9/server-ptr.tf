@@ -37,3 +37,10 @@ resource "dns_ptr_record" "ptr_srv_demo_3" {
   ptr  = "srv-demo-3.home.unixvextor.com."
   ttl  = 300
 }
+
+resource "dns_ptr_record" "ptr_proxmox" {
+  zone = "10.10.in-addr.arpa."
+  name = "26.0"
+  ptr  = "proxmox.home.unixvextor.com."
+  ttl  = 300
+}
