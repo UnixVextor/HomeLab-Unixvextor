@@ -11,7 +11,7 @@ resource "dns_a_record_set" "nas" {
   zone = "home.unixvextor.com."
   name = "nas"
   addresses = [
-    "10.10.0.17",
+    "10.10.0.15",
   ]
   ttl = 3600
 } 
