@@ -1,0 +1,37 @@
+---
+networks:
+  frontend:
+    external: true
+  backend:
+    external: true
+volumes:
+  vol-1:
+  vol-2:
+services:
+  passbolt:
+    container_name: passbolt-prod-1
+    image: passbolt/passbolt:4.7.0-1-ce
+    environment:
+      - APP_FULL_BASE_URL=https://passbolt.srv-prod-1.home.unixvextor.com
+      - DATASOURCES_DEFAULT_HOST=db-prod-1.home.unixvextor.com
+      - DATASOURCES_DEFAULT_USERNAME=passbolt
+      - DATASOURCES_DEFAULT_PASSWORD=passbolt
+      - DATASOURCES_DEFAULT_DATABASE=passbolt
+    volumes:
+      - vol-1:/etc/passbolt/gpg
+      - vol-2:/etc/passbolt/jwt
+    command: ["/usr/bin/wait-for.sh", "-t", "0", "db-prod-1.home.unixvextor.com:3306", "--", "/docker-entrypoint.sh"]
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.passbolt-http.entrypoints: "web"
+      traefik.http.routers.passbolt-http.rule: "Host(`passbolt.srv-prod-1.home.unixvextor.com`)"
+      traefik.http.routers.passbolt-http.middlewares: "passbolt-prod-1-middleware@file"
+      traefik.http.routers.passbolt-https.middlewares: "passbolt-prod-1-middleware@file"
+      traefik.http.routers.passbolt-https.entrypoints: "websecure"
+      traefik.http.routers.passbolt-https.rule: "Host(`passbolt.srv-prod-1.home.unixvextor.com`)"
+      traefik.http.routers.passbolt-https.tls: "true"
+      traefik.http.routers.passbolt-https.tls.certresolver: "cloudflare"
+    networks:
+      - frontend
+      - backend
+    restart: unless-stopped
