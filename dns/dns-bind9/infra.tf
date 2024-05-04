@@ -22,5 +22,5 @@ resource "dns_a_record_set" "pikvm" {
   addresses = [
     "10.10.0.12",
   ]
-  ttl = 3600 
+  ttl = 3600
 }
