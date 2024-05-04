@@ -20,7 +20,7 @@ resource "dns_a_record_set" "pikvm" {
   zone = "home.unixvextor.com."
   name = "pikvm"
   addresses = [
-    "10.10.0.12"
+    "10.10.0.12",
   ]
   ttl = 3600 
 }
