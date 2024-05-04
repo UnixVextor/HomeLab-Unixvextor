@@ -14,4 +14,13 @@ resource "dns_a_record_set" "nas" {
     "10.10.0.15",
   ]
   ttl = 3600
-} 
+}
+
+resource "dns_a_record_set" "pikvm" {
+  zone = "home.unixvextor.com."
+  name = "pikvm"
+  addresses = [
+    "10.10.0.12"
+  ]
+  ttl = 3600 
+}
