@@ -13,7 +13,7 @@ resource "proxmox_vm_qemu" "srv_demo_3" {
   full_clone = true
 
   # -- boot process -- 
-  onboot           = true
+  onboot           = false
   startup          = ""
   automatic_reboot = true
 
