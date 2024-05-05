@@ -52,6 +52,6 @@ resource "proxmox_vm_qemu" "srv_prod_4" {
   nameserver = "10.10.30.249"
   ciuser     = "unixvextor"
   sshkeys    = <<EOF
-  ${var.PUBLIC_SSH_KEY}
-  EOF
+${var.PUBLIC_SSH_KEY}
+EOF
 }
