@@ -1,6 +1,6 @@
-resource "proxmox_vm_qemu" "srv_prod_3" {
-  name        = "srv-prod-3"
-  desc        = "Server prod 3"
+resource "proxmox_vm_qemu" "srv_prod_4" {
+  name        = "srv-prod-4"
+  desc        = "Server prod 4"
   agent       = 1
   target_node = "prox"
   qemu_os     = "other"
@@ -48,7 +48,7 @@ resource "proxmox_vm_qemu" "srv_prod_3" {
   }
 
   # -- cloud-init --
-  ipconfig0  = "ip=10.10.30.13/24,gw=10.10.30.254"
+  ipconfig0  = "ip=10.10.30.14/24,gw=10.10.30.254"
   nameserver = "10.10.30.249"
   ciuser     = "unixvextor"
   sshkeys    = <<EOF

@@ -1,11 +1,11 @@
-resource "proxmox_vm_qemu" "srv_prod_3" {
-  name        = "srv-prod-3"
-  desc        = "Server prod 3"
+resource "proxmox_vm_qemu" "srv_demo_4" {
+  name        = "srv-demo-4"
+  desc        = "Server demo 4"
   agent       = 1
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"
-  tags        = "production,ubuntu-server"
+  tags        = "demo,ubuntu-server"
 
   define_connection_info = false
 
@@ -25,7 +25,7 @@ resource "proxmox_vm_qemu" "srv_prod_3" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr30"
+    bridge = "vmbr10"
   }
 
   scsihw   = "virtio-scsi-pci" # default virtio-scsi-pci
@@ -48,7 +48,7 @@ resource "proxmox_vm_qemu" "srv_prod_3" {
   }
 
   # -- cloud-init --
-  ipconfig0  = "ip=10.10.30.13/24,gw=10.10.30.254"
+  ipconfig0  = "ip=10.10.10.14/24,gw=10.10.10.254"
   nameserver = "10.10.30.249"
   ciuser     = "unixvextor"
   sshkeys    = <<EOF
