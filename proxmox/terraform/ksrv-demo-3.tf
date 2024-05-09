@@ -7,7 +7,6 @@ resource "proxmox_vm_qemu" "krsv_demo_3" {
   bios        = "seabios"
   tags        = "demo,ubuntu-server, kube"
 
-  define_connection_info = false
 
   clone      = "ubuntu-template"
   full_clone = true

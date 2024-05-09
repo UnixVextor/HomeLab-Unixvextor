@@ -7,7 +7,6 @@ resource "proxmox_vm_qemu" "srv_prod_4" {
   bios        = "seabios"
   tags        = "production,ubuntu-server"
 
-  define_connection_info = false
 
   clone      = "ubuntu-jemmy-docker"
   full_clone = true
