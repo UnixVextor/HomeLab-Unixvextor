@@ -5,7 +5,7 @@ resource "proxmox_vm_qemu" "kube_demo_1" {
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"
-  tags        = "demo,ubuntu-server, kube"
+  tags        = "demo,ubuntu-server,kube"
 
   clone      = "ubuntu-template"
   full_clone = true
