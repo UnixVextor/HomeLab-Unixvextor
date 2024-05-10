@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "kube_demo_1" {
   name        = "kube-demo-1"
   desc        = "-Kube master demo 1-"
-  agent       = 1
+  agent       = 0
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"
