@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "srv_prod_4" {
   name        = "srv-prod-4"
   desc        = "Server prod 4"
-  agent       = 1
+  agent       = 0
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"
@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "srv_prod_4" {
   # -- boot process -- 
   onboot           = false
   startup          = ""
-  automatic_reboot = false
+  automatic_reboot = true
 
   cores   = 4
   sockets = 1
