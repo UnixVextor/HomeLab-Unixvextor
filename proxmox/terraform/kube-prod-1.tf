@@ -23,7 +23,7 @@ resource "proxmox_vm_qemu" "kube_prod_1" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr10"
+    bridge = "vmbr30"
   }
 
   scsihw   = "virtio-scsi-pci" # default virtio-scsi-pci
