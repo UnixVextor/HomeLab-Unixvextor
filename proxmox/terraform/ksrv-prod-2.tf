@@ -1,4 +1,4 @@
-resource "proxmox_vm_qemu" "krsv_prod_1" {
+resource "proxmox_vm_qemu" "krsv_prod_2" {
   name        = "krsv-prod-2"
   desc        = "-Kube node prod 2-"
   agent       = 0
