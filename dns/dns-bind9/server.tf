@@ -105,3 +105,59 @@ resource "dns_a_record_set" "wild_srv_demo_4" {
   addresses = ["10.10.10.14"]
   ttl       = 3600
 }
+
+resource "dns_a_record_set" "kube_demo_1" {
+  zone      = "home.unixvextor.com."
+  name      = "kube-demo-1"
+  addresses = ["10.10.10.30"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "ksrv_demo_1" {
+  zone      = "home.unixvextor.com."
+  name      = "ksrv-demo-1"
+  addresses = ["10.10.10.31"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "ksrv_demo_2" {
+  zone      = "home.unixvextor.com."
+  name      = "ksrv-demo-2"
+  addresses = ["10.10.10.31"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "ksrv_demo_3" {
+  zone      = "home.unixvextor.com."
+  name      = "ksrv-demo-3"
+  addresses = ["10.10.10.31"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "kube_prod_1" {
+  zone      = "home.unixvextor.com."
+  name      = "kube-prod-1"
+  addresses = ["10.10.30.30"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "ksrv_prod_1" {
+  zone      = "home.unixvextor.com."
+  name      = "ksrv-prod-1"
+  addresses = ["10.10.30.31"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "ksrv_prod_2" {
+  zone      = "home.unixvextor.com."
+  name      = "ksrv-prod-2"
+  addresses = ["10.10.30.31"]
+  ttl       = 3600
+}
+
+resource "dns_a_record_set" "ksrv_prod_3" {
+  zone      = "home.unixvextor.com."
+  name      = "ksrv-prod-3"
+  addresses = ["10.10.30.31"]
+  ttl       = 3600
+}
