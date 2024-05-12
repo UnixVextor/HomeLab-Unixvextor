@@ -117,7 +117,7 @@ resource "dns_a_record_set" "wild_kube_demo_1" {
   zone      = "home.unixvextor.com."
   name      = "*.kube-demo-1"
   addresses = ["10.10.10.30"]
-  ttl =  3600
+  ttl       = 3600
 }
 
 resource "dns_a_record_set" "ksrv_demo_1" {
@@ -151,7 +151,7 @@ resource "dns_a_record_set" "wild_kube_prod_1" {
   zone      = "home.unixvextor.com."
   name      = "*.kube-prod-1"
   addresses = ["10.10.30.30"]
-  ttl =  3600
+  ttl       = 3600
 }
 resource "dns_a_record_set" "ksrv_prod_1" {
   zone      = "home.unixvextor.com."
