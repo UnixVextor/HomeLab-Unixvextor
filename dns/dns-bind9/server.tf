@@ -130,14 +130,14 @@ resource "dns_a_record_set" "ksrv_demo_1" {
 resource "dns_a_record_set" "ksrv_demo_2" {
   zone      = "home.unixvextor.com."
   name      = "ksrv-demo-2"
-  addresses = ["10.10.10.31"]
+  addresses = ["10.10.10.32"]
   ttl       = 3600
 }
 
 resource "dns_a_record_set" "ksrv_demo_3" {
   zone      = "home.unixvextor.com."
   name      = "ksrv-demo-3"
-  addresses = ["10.10.10.31"]
+  addresses = ["10.10.10.33"]
   ttl       = 3600
 }
 
@@ -163,13 +163,13 @@ resource "dns_a_record_set" "ksrv_prod_1" {
 resource "dns_a_record_set" "ksrv_prod_2" {
   zone      = "home.unixvextor.com."
   name      = "ksrv-prod-2"
-  addresses = ["10.10.30.31"]
+  addresses = ["10.10.30.32"]
   ttl       = 3600
 }
 
 resource "dns_a_record_set" "ksrv_prod_3" {
   zone      = "home.unixvextor.com."
   name      = "ksrv-prod-3"
-  addresses = ["10.10.30.31"]
+  addresses = ["10.10.30.33"]
   ttl       = 3600
 }
