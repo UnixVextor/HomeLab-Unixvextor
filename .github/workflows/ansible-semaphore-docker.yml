@@ -1,0 +1,32 @@
+name: Update Semaphore Docker Container
+
+on:
+     push:
+          branches:
+               - main
+          paths:
+               - 'ansible/ansiblesemaphore-prod-1/docker-compose.yaml'
+env:
+     SEMAPHORE_DB_USER: ${{ secrets.SEMAPHORE_DB_USER }}
+     SEMAPHORE_DB_PASS: ${{ secrets.SEMAPHORE_DB_PASS }}
+     SEMAPHORE_ADMIN_PASSWORD: ${{ secrets.SEMAPHORE_ADMIN_PASSWORD }}
+     SEMAPHORE_ACCESS_KEY_ENCRYPTION: ${{ secrets.SEMAPHORE_ACCESS_KEY_ENCRYPTION }}
+jobs:
+     deploy:
+          runs-on: "self-hosted"
+          steps:
+               - name: Checkout
+                 uses: actions/checkout@v2
+
+               - name: Copy docker-compose.yaml
+                 run: |
+                      cp ansible/ansiblesemaphore-prod-1/docker-compose.yaml /home/unixvextor/ansiblesemaphore-prod-1/docker-compose.yaml
+               
+               - name: Update Semaphore Docker Container
+                 run: |
+                         cd /home/unixvextor/ansiblesemaphore-prod-1/
+                         export SEMAPHORE_DB_USER=${SEMAPHORE_DB_USER}
+                         export SEMAPHORE_DB_PASS=${SEMAPHORE_DB_PASS}
+                         export SEMAPHORE_ADMIN_PASSWORD=${SEMAPHORE_ADMIN_PASSWORD}
+                         export SEMAPHORE_ACCESS_KEY_ENCRYPTION=${SEMAPHORE_ACCESS_KEY_EN}
+                         docker compose up -d --force-recreate
