@@ -31,13 +31,13 @@ services:
       - ./authorized_keys/:/authorized_keys:ro
       - ./config/:/etc/semaphore:rw
     labels:
-      traefik.enable: "true"
-      traefik.http.routers.ansiblesemaphore-prod-1-http.entrypoints: "web"
-      traefik.http.routers.ansiblesemaphore-prod-1-http.rule: "Host(`ansiblesemaphore.srv-prod-1.home.unixvextor.com`)"
-      traefik.http.routers.ansiblesemaphore-prod-1-https.entrypoints: "websecure"
-      traefik.http.routers.ansiblesemaphore-prod-1-https.rule: "Host(`ansiblesemaphore.srv-prod-1.home.unixvextor.com`)"
-      traefik.http.routers.ansiblesemaphore-prod-1-https.tls: "true"
-      traefik.http.routers.ansiblesemaphore-prod-1-https.tls.certresolver: "cloudflare"
+     traefik.enable: "true"
+     traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.port: "3000"
+     traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.scheme: "http"
+     traefik.http.routers.ansiblesemaphore-prod-1-https.entrypoints: "websecure"
+     traefik.http.routers.ansiblesemaphore-prod-1-https.rule: "Host(`ansiblesemaphore.srv-prod-1.home.unixvextor.com`)"
+     traefik.http.routers.ansiblesemaphore-prod-1-https.tls: "true"
+     traefik.http.routers.ansiblesemaphore-prod-1-https.tls.certresolver: "cloudflare"  
     networks:
       - frontend
       - backend

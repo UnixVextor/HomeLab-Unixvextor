@@ -25,8 +25,8 @@ jobs:
                - name: Update Semaphore Docker Container
                  run: |
                          cd /home/unixvextor/ansiblesemaphore-prod-1/
-                         export SEMAPHORE_DB_USER=${SEMAPHORE_DB_USER}
-                         export SEMAPHORE_DB_PASS=${SEMAPHORE_DB_PASS}
-                         export SEMAPHORE_ADMIN_PASSWORD=${SEMAPHORE_ADMIN_PASSWORD}
-                         export SEMAPHORE_ACCESS_KEY_ENCRYPTION=${SEMAPHORE_ACCESS_KEY_EN}
+                         export SEMAPHORE_DB_USER=${{ secrets.SEMAPHORE_DB_USER }}
+                         export SEMAPHORE_DB_PASS=${{ secrets.SEMAPHORE_DB_PASS }}
+                         export SEMAPHORE_ADMIN_PASSWORD=${{ secrets.SEMAPHORE_ADMIN_PASSWORD }}
+                         export SEMAPHORE_ACCESS_KEY_ENCRYPTION=${{ secrets.SEMAPHORE_ACCESS_KEY_ENCRIPTION }}
                          docker compose up -d --force-recreate
