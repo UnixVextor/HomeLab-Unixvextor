@@ -9,8 +9,6 @@ services:
     container_name: ansiblesemaphore-prod-1
     image: semaphoreui/semaphore:v2.9.75
     restart: unless-stopped
-    ports:
-      - 3000:3000
     environment:
       SEMAPHORE_DB_USER: ${SEMAPHORE_DB_USER}
       SEMAPHORE_DB_PASS: ${SEMAPHORE_DB_PASS}
