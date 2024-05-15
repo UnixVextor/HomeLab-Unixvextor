@@ -4,6 +4,8 @@ networks:
     external: true
   backend:
     external: true
+volumes:
+  semaphore-mysql:
 services:
   mysql:
     restart: unless-stopped
