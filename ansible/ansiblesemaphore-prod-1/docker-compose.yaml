@@ -10,32 +10,31 @@ services:
     image: semaphoreui/semaphore:v2.9.75
     restart: unless-stopped
     environment:
-      SEMAPHORE_DB_USER: ${SEMAPHORE_DB_USER}
-      SEMAPHORE_DB_PASS: ${SEMAPHORE_DB_PASS}
-      SEMAPHORE_DB_HOST: db-prod-1.home.unixvextor.com
-      SEMAPHORE_DB_PORT: 3306 
-      SEMAPHORE_DB_DIALECT: mysql 
-      SEMAPHORE_DB: ansiblesemaphore_prod_1_db
-      SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
-      SEMAPHORE_ADMIN_PASSWORD: ${SEMAPHORE_ADMIN_PASSWORD}
-      SEMAPHORE_ADMIN_NAME: admin
-      SEMAPHORE_ADMIN_EMAIL: admin@localhost
-      SEMAPHORE_ADMIN: admin
-      SEMAPHORE_ACCESS_KEY_ENCRYPTION: ${SEMAPHORE_ACCESS_KEY_ENCRYPTION}
-      ANSIBLE_HOST_KEY_CHECKING: false
-      TZ: UTC
-    volumes:
-      - ./inventory/:/inventory:ro
-      - ./authorized_keys/:/authorized_keys:ro
-      - ./config/:/etc/semaphore:rw
+      - SEMAPHORE_DB_USER=${SEMAPHORE_DB_USER}
+      - SEMAPHORE_DB_PASS=${SEMAPHORE_DB_PASS}
+      - SEMAPHORE_DB_HOST=db-prod-1.home.unixvextor.com
+      - SEMAPHORE_DB_PORT=3306 
+      - SEMAPHORE_DB_DIALECT=mysql 
+      - SEMAPHORE_DB=ansiblesemaphore_prod_1_db 
+      - SEMAPHORE_PLAYBOOK_PATH=/tmp/semaphore/
+      - SEMAPHORE_ADMIN_PASSWORD=${SEMAPHORE_ADMIN_PASSWORD}
+      - SEMAPHORE_ADMIN_NAME=admin
+      - SEMAPHORE_ADMIN_EMAIL=admin@localhost
+      - SEMAPHORE_ADMIN=admin
+      - SEMAPHORE_ACCESS_KEY_ENCRYPTION=${SEMAPHORE_ACCESS_KEY_ENCRYPTION}
+      - ANSIBLE_HOST_KEY_CHECKING=false
+    # volumes:
+    #   - ./inventory/:/inventory:ro
+    #   - ./authorized_keys/:/authorized_keys:ro
+    #   - ./config/:/etc/semaphore:rw
     labels:
-     traefik.enable: "true"
-     traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.port: "3000"
-     traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.scheme: "http"
-     traefik.http.routers.ansiblesemaphore-prod-1-https.entrypoints: "websecure"
-     traefik.http.routers.ansiblesemaphore-prod-1-https.rule: "Host(`ansiblesemaphore.srv-prod-1.home.unixvextor.com`)"
-     traefik.http.routers.ansiblesemaphore-prod-1-https.tls: "true"
-     traefik.http.routers.ansiblesemaphore-prod-1-https.tls.certresolver: "cloudflare"  
+      traefik.enable: "true"
+      traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.port: "3000"
+      traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.scheme: "http"
+      traefik.http.routers.ansiblesemaphore-prod-1-https.entrypoints: "websecure"
+      traefik.http.routers.ansiblesemaphore-prod-1-https.rule: "Host(`ansiblesemaphore.srv-prod-1.home.unixvextor.com`)"
+      traefik.http.routers.ansiblesemaphore-prod-1-https.tls: "true"
+      traefik.http.routers.ansiblesemaphore-prod-1-https.tls.certresolver: "cloudflare"  
     networks:
       - frontend
       - backend
