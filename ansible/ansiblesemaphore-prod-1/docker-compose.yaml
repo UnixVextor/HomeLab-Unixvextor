@@ -9,6 +9,8 @@ services:
     container_name: ansiblesemaphore-prod-1
     image: semaphoreui/semaphore:v2.9.75
     restart: unless-stopped
+    ports:
+      - 3000:3000
     environment:
       SEMAPHORE_DB_USER: ${SEMAPHORE_DB_USER}
       SEMAPHORE_DB_PASS: ${SEMAPHORE_DB_PASS}
@@ -25,8 +27,8 @@ services:
       ANSIBLE_HOST_KEY_CHECKING: false
     volumes:
       - ./inventory/:/inventory:ro
-      - ./authorized-keys/:/authorized-keys:ro
-      - ./config/:/etc/semaphore:rw 
+    #   - ./authorized-keys/:/authorized-keys:ro
+    #   - ./config/:/etc/semaphore:rw 
     labels:
       traefik.enable: "true"
       traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.port: "3000"
