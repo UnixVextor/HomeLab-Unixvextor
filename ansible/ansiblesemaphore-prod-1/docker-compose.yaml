@@ -5,6 +5,17 @@ networks:
   backend:
     external: true
 services:
+  mysql:
+    restart: unless-stopped
+    image: mysql:8.0
+    hostname: mysql
+    volumes:
+      - semaphore-mysql:/var/lib/mysql
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD='yes'
+      - MYSQL_DATABASE=ansiblesemaphore_prod_1_db
+      - MYSQL_USER=${SEMAPHORE_DB_USER}
+      - MYSQL_PASSWORD=${SEMAPHORE_DB_PASS}
   semaphore:
     container_name: ansiblesemaphore-prod-1
     image: semaphoreui/semaphore:v2.9.75
@@ -12,8 +23,8 @@ services:
     environment:
       - SEMAPHORE_DB_USER=${SEMAPHORE_DB_USER}
       - SEMAPHORE_DB_PASS=${SEMAPHORE_DB_PASS}
-      - SEMAPHORE_DB_HOST=db-prod-1.home.unixvextor.com
-      - SEMAPHORE_DB_PORT=3306 
+      - SEMAPHORE_DB_HOST=mysql
+      - SEMAPHORE_DB_PORT=3306
       - SEMAPHORE_DB_DIALECT=mysql 
       - SEMAPHORE_DB=ansiblesemaphore_prod_1_db 
       - SEMAPHORE_PLAYBOOK_PATH=/tmp/semaphore/
@@ -23,10 +34,10 @@ services:
       - SEMAPHORE_ADMIN=admin
       - SEMAPHORE_ACCESS_KEY_ENCRYPTION=${SEMAPHORE_ACCESS_KEY_ENCRYPTION}
       - ANSIBLE_HOST_KEY_CHECKING=false
-    # volumes:
-    #   - ./inventory/:/inventory:ro
-    #   - ./authorized_keys/:/authorized_keys:ro
-    #   - ./config/:/etc/semaphore:rw
+    volumes:
+      - ./inventory/:/inventory:ro
+      - ./authorized_keys/:/authorized_keys:ro
+      - ./config/:/etc/semaphore:rw
     labels:
       traefik.enable: "true"
       traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.port: "3000"
