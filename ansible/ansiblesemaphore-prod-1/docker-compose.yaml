@@ -23,10 +23,10 @@ services:
       SEMAPHORE_ADMIN: admin
       SEMAPHORE_ACCESS_KEY_ENCRYPTION: ${SEMAPHORE_ACCESS_KEY_ENCRYPTION}
       ANSIBLE_HOST_KEY_CHECKING: false
-    # volumes:
-    #   - ./inventory/:/inventory:ro
-    #   - ./authorized_keys/:/authorized_keys:ro
-    #   - ./config/:/etc/semaphore:rw
+    volumes:
+      - ./inventory/:/inventory:ro
+      - ./authorized_keys/:/authorized_keys:ro
+      - ./config/:/etc/semaphore:rw
     labels:
       traefik.enable: "true"
       traefik.http.services.ansiblesemaphore-prod-1.loadbalancer.server.port: "3000"
