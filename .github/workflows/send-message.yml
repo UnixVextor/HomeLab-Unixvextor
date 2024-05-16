@@ -1,0 +1,39 @@
+name: "Test send Message"
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    TF_VAR_TSIG_KEY: ${{ secrets.TSIG_KEY }}
+
+jobs:
+    message:
+        runs-on: "self-hosted"
+        steps:
+            
+            - name: Send Notification
+              if: github.event_name == 'push'
+              uses: fjogeleit/http-request-action@v1
+              with:
+                  timeout: 60000
+                  url: ${{ secrets.SLACK_WEBHOOK_GITHUB_ACTIONS }}
+                  method: 'POST'
+                  customHeaders: '{"Content-Type": "application/json"}'
+                  data: 
+                    '{
+                      "attachments":[
+                          {
+                            "fallback":"This is hidden",
+                            "color":"#00ECFF",
+                            "fields":[
+                                {
+                                  "title":"DNS Update Records",
+                                  "value": "test message",
+                                  "short": true
+                                }
+                            ]
+                          }
+                      ]
+                    }'
