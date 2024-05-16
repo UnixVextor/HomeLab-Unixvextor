@@ -1,0 +1,39 @@
+- hosts: "{{ hosts }}"
+
+  become: yes
+  tasks:
+
+    - name: Update apt packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: check if system reboot is required
+      become: yes
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Send Slack Message
+      uri:
+        url: "{{ slack_webhook }}"
+        method: POST
+        body:
+        '{
+          "attachments":[
+              {
+                "fallback":"This is hidden",
+                "color":"#00ECFF",
+                "fields":[
+                    {
+                      "title":"Update apt packages",
+                      "value":"Reboot required on {{ inventory_hostname }}",
+                      "short": false
+                    }
+                ]
+              }
+          ]
+        }'
+        status_code: 204
+        body_format: json
+      when: reboot_required.stat.exists

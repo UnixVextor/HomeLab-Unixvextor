@@ -1,0 +1,21 @@
+- hosts: "{{ hosts }}"
+
+  become: yes
+  tasks:
+
+    - name: Install Core Packages for VM in promox
+      apt:
+        name:
+          - prometheus-node-exporter
+          - nfs-common
+          - qemu-guest-agent
+          - unzip
+          - htop
+          - neofetch
+        update_cache: yes
+
+    - name: enable guest qemu agent
+      service:
+        name: qemu-guest-agent
+        enabled: yes
+        state: started

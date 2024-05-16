@@ -1,0 +1,38 @@
+- hosts: "{{ hosts }}"
+
+  become: yes
+  tasks:
+
+    - name: Update disk space
+      command: df -h
+      register: disk_usage
+
+    - name: Check disk space available
+      shell: df -h / | awk 'NR==2{print $5}'
+      register: disk_usage
+
+    - name: Send Slack Message
+      uri:
+        url: "{{ slack_webhook }}"
+        method: POST
+        body_format: json
+        body:
+        '{
+          "attachments":[
+              {
+                "fallback":"This is hidden",
+                "color":"#00ECFF",
+                "fields":[
+                    {
+                      "title":"Update disk space",
+                      "value":"Disk space on {{ inventory_hostname }} is {{ disk_usage.stdout }} above 80% full. Please clean up the",
+                      "short": false
+                    }
+                ]
+              }
+          ]
+        }'
+        headers:
+          Content-Type: application/json
+        status_code: 204
+      when: disk_usage.stdout[:-1]|int > 80
