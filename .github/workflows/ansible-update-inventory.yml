@@ -39,7 +39,7 @@ jobs:
                                         {
                                              "title":"Ansible Inventory File Update",
                                              "value": "Successfully Ansible Inventory File Update 🚀",
-                                             "short": true
+                                             "short": false
                                         }
                                    ]
                               }

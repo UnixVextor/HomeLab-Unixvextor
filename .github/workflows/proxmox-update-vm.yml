@@ -97,7 +97,7 @@ jobs:
                                 {
                                   "title":"Proxmox Update VM",
                                   "value": "Successfully Promox Update VM 🚀",
-                                  "short": true
+                                  "short": false
                                 }
                             ]
                           }

@@ -49,7 +49,7 @@ jobs:
                                         {
                                         "title":"Ansible Semaphore Docker Container Update",
                                         "value": "Successfully Ansible Semaphore Docker Container Update 🚀",
-                                        "short": true
+                                        "short": false
                                         }
                                    ]
                                    }

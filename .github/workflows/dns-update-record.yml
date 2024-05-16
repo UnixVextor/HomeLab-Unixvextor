@@ -95,7 +95,7 @@ jobs:
                                 {
                                   "title":"DNS Update Records",
                                   "value": "Successfully updated DNS records. 🚀",
-                                  "short": true
+                                  "short": false
                                 }
                             ]
                           }
