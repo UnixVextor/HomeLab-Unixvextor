@@ -17,5 +17,5 @@
     - name: enable guest qemu agent
       service:
         name: qemu-guest-agent
-        enabled: yes
         state: started
+        enabled: yes
