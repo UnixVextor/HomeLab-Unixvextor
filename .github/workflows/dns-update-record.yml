@@ -94,7 +94,7 @@ jobs:
                             "fields":[
                                 {
                                   "title":"DNS Update Records",
-                                  "value": "${{ steps.plan.outputs.stdout }}",
+                                  "value": "Successfully updated DNS records. 🚀",
                                   "short": true
                                 }
                             ]
