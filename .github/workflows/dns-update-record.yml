@@ -76,3 +76,27 @@ jobs:
             - name: Terraform Apply
               if: github.event_name == 'push'
               run: terraform apply -auto-approve -input=false
+            
+            - name: Send Notification
+              if: github.event_name == 'push'
+              uses: fjogeleit/http-request-action@v1
+              with:
+                  timeout: 60000
+                  url: ${{ secrets.SLACK_WEBHOOK_GITHUB_ACTIONS }}
+                  method: POST
+                  customHeaders: '{"Content-Type": "application/json"}'
+                  data: |
+                    {
+                      "attachments":[
+                          {
+                            "color":"#00ECFF",
+                            "fields":[
+                                {
+                                  "title":"DNS Update Records",
+                                  "value": `${{ steps.plan.outcome}}`,
+                                  "short": false
+                                }
+                            ]
+                          }
+                      ]
+                    }
