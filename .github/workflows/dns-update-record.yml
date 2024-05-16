@@ -87,18 +87,18 @@ jobs:
                   customHeaders: '{"Content-Type": "application/json"}'
                   data: 
                     '{
-                      "attachments":
-                      [
-                        {
+                      "attachments":[
+                          {
                             "fallback":"This is hidden",
                             "color":"#00ECFF",
                             "fields":[
                                 {
                                   "title":"DNS Update Records",
-                                  "value": ${{ steps.plan.outcome}},
-                                  "short": false
+                                  "value": "${{ steps.plan.outputs.stdout }}",
+                                  "short": true
                                 }
                             ]
-                        }
+                          }
                       ]
                     }'
+                    
