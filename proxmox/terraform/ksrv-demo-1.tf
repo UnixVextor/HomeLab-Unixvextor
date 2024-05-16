@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "krsv_demo_1" {
   name        = "krsv-demo-1"
   desc        = "-Kube node demo 1-"
-  agent       = 0
+  agent       = 1
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"

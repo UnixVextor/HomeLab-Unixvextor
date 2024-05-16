@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "srv_prod_3" {
   name        = "srv-prod-3"
   desc        = "Server prod 3"
-  agent       = 0
+  agent       = 1
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"
