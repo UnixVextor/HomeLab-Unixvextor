@@ -86,7 +86,7 @@ jobs:
                   method: POST
                   customHeaders: '{"Content-Type": "application/json"}'
                   data: |
-                    {
+                    '{
                       "attachments":[
                           {
                             "fallback":"This is hidden",
@@ -100,4 +100,4 @@ jobs:
                             ]
                           }
                       ]
-                    }
+                    }'
