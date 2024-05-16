@@ -13,6 +13,10 @@ jobs:
           steps:
                - name: Checkout
                  uses: actions/checkout@v2
+               
+               - name: Change Perrmission File
+                 run: |
+                      chown -R unixvextor:unixvextor /home/unixvextor/ansiblesemaphore-prod-1/inventory
 
                - name: Copy Inventory File
                  run: |
