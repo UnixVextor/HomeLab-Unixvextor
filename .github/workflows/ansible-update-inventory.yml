@@ -1,0 +1,43 @@
+name: Update Inventory File
+
+on:
+     push:
+          branches:
+               - main
+          paths:
+               - 'ansible/inventory/*'
+
+jobs:
+     update-inventory:
+          runs-on: "self-hosted"
+          steps:
+               - name: Checkout
+                 uses: actions/checkout@v2
+
+               - name: Copy Inventory File
+                 run: |
+                      cp ansible/inventory/* /home/unixvextor/ansiblesemaphore-prod-1/inventory/
+               
+               - name: Send Notification
+                 uses: fjogeleit/http-request-action@v1
+                 with:
+                    timeout: 60000
+                    url: ${{ secrets.SLACK_WEBHOOK_GITHUB_ACTIONS }}
+                    method: 'POST'
+                    customHeaders: '{"Content-Type": "application/json"}'
+                    data: 
+                          '{
+                              "attachments":[
+                              {
+                                   "fallback":"This is hidden",
+                                   "color":"#00ECFF",
+                                   "fields":[
+                                        {
+                                             "title":"Ansible Inventory File Update",
+                                             "value": "Successfully Ansible Inventory File Update 🚀",
+                                             "short": true
+                                        }
+                                   ]
+                              }
+                              ]
+                          }'
