@@ -167,7 +167,7 @@ resource "dns_a_record_set" "ksrv_prod_2" {
   ttl       = 3600
 }
 
-resource "dns_a_record_set" "ksrv_prod_3_" {
+resource "dns_a_record_set" "ksrv_prod_3" {
   zone      = "home.unixvextor.com."
   name      = "ksrv-prod-3"
   addresses = ["10.10.30.33"]

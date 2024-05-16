@@ -89,6 +89,7 @@ jobs:
                     {
                       "attachments":[
                           {
+                            "fallback":"This is hidden",
                             "color":"#00ECFF",
                             "fields":[
                                 {
