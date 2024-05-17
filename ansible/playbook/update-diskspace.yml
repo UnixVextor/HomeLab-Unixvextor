@@ -16,22 +16,7 @@
         url: "{{ slack_webhook }}"
         method: POST
         body_format: json
-        body:
-        '{
-          "attachments":[
-              {
-                "fallback":"This is hidden",
-                "color":"#00ECFF",
-                "fields":[
-                    {
-                      "title":"Update disk space",
-                      "value":"Disk space on {{ inventory_hostname }} is {{ disk_usage.stdout }} above 80% full. Please clean up the",
-                      "short": false
-                    }
-                ]
-              }
-          ]
-        }'
+        body: '{"attachments":[{"fallback":"This is hidden", "color":"#00ECFF","fields":[{"title":"Update disk space","value":"Disk space on {{ inventory_hostname }} is {{ disk_usage.stdout }} above 80% full. Please clean up the","short": false}]}]}'
         headers:
           Content-Type: application/json
         status_code: 204

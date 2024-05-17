@@ -18,22 +18,7 @@
       uri:
         url: "{{ slack_webhook }}"
         method: POST
-        body:
-        '{
-          "attachments":[
-              {
-                "fallback":"This is hidden",
-                "color":"#00ECFF",
-                "fields":[
-                    {
-                      "title":"Update apt packages",
-                      "value":"Reboot required on {{ inventory_hostname }}",
-                      "short": false
-                    }
-                ]
-              }
-          ]
-        }'
+        body: '{"attachments":[{"fallback":"This is hidden","color":"#00ECFF","fields":[{"title":"Update apt packages","value":"Reboot required on {{ inventory_hostname }}","short": false}]}]}'
         status_code: 204
         body_format: json
       when: reboot_required.stat.exists
