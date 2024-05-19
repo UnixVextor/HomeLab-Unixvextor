@@ -17,8 +17,8 @@ resource "proxmox_vm_qemu" "krsv_demo_3" {
   automatic_reboot = true
 
   cores   = 4
-  sockets = 8192
-  memory  = 4096
+  sockets = 1
+  memory  = 8192
   cpu     = "host"
 
 
