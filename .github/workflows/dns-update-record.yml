@@ -89,7 +89,7 @@ jobs:
                     '{
                       "attachments":[
                           {
-                            "fallback":"This is hidden",
+                            "fallback":"Successfully updated DNS records. 🚀",
                             "color":"#00ECFF",
                             "fields":[
                                 {

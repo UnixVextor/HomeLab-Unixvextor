@@ -43,7 +43,7 @@ jobs:
                          '{
                               "attachments":[
                                    {
-                                   "fallback":"This is hidden",
+                                   "fallback":"Successfully Ansible Semaphore Docker Container Update 🚀",
                                    "color":"#00ECFF",
                                    "fields":[
                                         {

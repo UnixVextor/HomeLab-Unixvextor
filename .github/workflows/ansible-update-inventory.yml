@@ -33,7 +33,7 @@ jobs:
                           '{
                               "attachments":[
                               {
-                                   "fallback":"This is hidden",
+                                   "fallback":"Successfully Ansible Inventory File Update 🚀",
                                    "color":"#00ECFF",
                                    "fields":[
                                         {

@@ -91,7 +91,7 @@ jobs:
                     '{
                       "attachments":[
                           {
-                            "fallback":"This is hidden",
+                            "fallback":"Successfully Promox Update VM 🚀",
                             "color":"#00ECFF",
                             "fields":[
                                 {
