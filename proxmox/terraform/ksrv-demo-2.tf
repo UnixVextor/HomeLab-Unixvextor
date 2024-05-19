@@ -18,7 +18,7 @@ resource "proxmox_vm_qemu" "krsv_demo_2" {
 
   cores   = 4
   sockets = 1
-  memory  = 4096
+  memory  = 8192
   cpu     = "host"
 
 
