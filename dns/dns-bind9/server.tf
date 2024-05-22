@@ -75,7 +75,7 @@ resource "dns_a_record_set" "srv_demo_2" {
 resource "dns_a_record_set" "wild_srv_demo_2" {
   zone      = "home.unixvextor.com."
   name      = "*.srv-demo-2"
-  addresses = ["10.10.10.246", "10.10.10.247"]
+  addresses = ["10.10.10.246"]
   ttl       = 3600
 }
 resource "dns_a_record_set" "srv_demo_3" {
