@@ -14,9 +14,9 @@ services:
     environment:
       - APP_FULL_BASE_URL=https://passbolt.srv-prod-1.home.unixvextor.com
       - DATASOURCES_DEFAULT_HOST=db-prod-1.home.unixvextor.com
-      - DATASOURCES_DEFAULT_USERNAME=passbolt
-      - DATASOURCES_DEFAULT_PASSWORD=passbolt
-      - DATASOURCES_DEFAULT_DATABASE=passbolt
+      - DATASOURCES_DEFAULT_USERNAME=root
+      - DATASOURCES_DEFAULT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - DATASOURCES_DEFAULT_DATABASE=passbolt_prod_1_db
     volumes:
       - vol-1:/etc/passbolt/gpg
       - vol-2:/etc/passbolt/jwt

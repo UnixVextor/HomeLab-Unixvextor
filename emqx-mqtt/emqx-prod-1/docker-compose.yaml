@@ -1,0 +1,43 @@
+---
+networks:
+  backend:
+    external: true
+volumes:
+  emqx-data:
+    driver: local
+  emqx-log:
+    driver: local
+services:
+  emqx:
+    image: emqx/emqx:5.6.1
+    container_name: emqx-prod-1
+    restart: unless-stopped
+    environment:
+      - "EMQX_LISTENERS__SSL__DEFAULT__BIND=8883"
+      - "EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE=/etc/emqx/certs/emqx.key"
+      - "EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE=/etc/emqx/certs/emqx.pem"
+      - "EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CACERTFILE=/etc/emqx/certs/ca.pem"
+      - "EMQX_LISTENERS__WSS__DEFAULT__SSL_OPTIONS__KEYFILE=/etc/emqx/certs/emqx.key"
+      - "EMQX_LISTENERS__WSS__DEFAULT__SSL_OPTIONS__CERTFILE=/etc/emqx/certs/emqx.pem"
+      - "EMQX_LISTENERS__WSS__DEFAULT__SSL_OPTIONS__CACERTFILE=/etc/emqx/certs/ca.pem"
+      - "EMQX_DASHBOARD__LISTENERS__HTTP__ENABLE=true"
+      - "EMQX_DASHBOARD__LISTENERS__HTTP__BIND=18083"
+     
+    volumes:
+      - ./conf/certs:/etc/emqx/certs:ro
+      - emqx-log:/opt/emqx/log
+      - emqx-data:/opt/emqx/data
+
+    ports:
+      - 8883:8883
+
+    labels:
+      traefik.enable: "true"
+      traefik.http.services.emqx.loadbalancer.server.port: "18083"
+      traefik.http.services.emqx.loadbalancer.server.scheme: "http"
+      traefik.http.routers.emqx-https.entrypoints: "websecure"
+      traefik.http.routers.emqx-https.rule: "Host(`emqx.srv-prod-2.home.unixvextor.com`)"
+      traefik.http.routers.emqx-https.tls: "true"
+      traefik.http.routers.emqx-https.tls.certresolver: "cloudflare"
+    networks:
+      backend:

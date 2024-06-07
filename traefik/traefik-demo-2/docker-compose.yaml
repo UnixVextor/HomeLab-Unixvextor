@@ -1,0 +1,35 @@
+---
+networks:
+  frontend:
+    external: true
+  backend:
+    external: true
+services:
+  traefik:
+    container_name: traefik-demo-2
+    image: traefik:2.10.5
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CF_API_EMAIL=withun.wch@gmail.com
+      - CF_DNS_API_TOKEN=$CF_DNS_API_TOKEN
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
+      - ./config/conf/:/etc/traefik/conf/
+      - ./config/certs/:/etc/traefik/certs/
+    networks:
+      - frontend
+      - backend
+    labels:
+      traefik.enable: true
+      traefik.http.middlewares.traefik-auth.basicauth.users: "admin:$$2y$$10$$u9Nh8A5IEwfHquo2.052jeACWwh/8Sy8l4nEt5BmdKUJW5t/CmpVi"
+      traefik.http.routers.traefik-secure.entrypoints: "websecure"
+      traefik.http.routers.traefik-secure.rule: "Host(`traefik.srv-demo-2.home.unixvextor.com`)"
+      traefik.http.routers.traefik-secure.middlewares: "traefik-auth"
+      traefik.http.routers.traefik-secure.tls: true
+      traefik.http.routers.traefik-secure.tls.certresolver: "cloudflare"
+      traefik.http.routers.traefik-secure.service: "api@internal"
