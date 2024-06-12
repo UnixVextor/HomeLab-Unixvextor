@@ -1,5 +1,5 @@
-resource "proxmox_vm_qemu" "krsv_demo_1" {
-  name        = "krsv-demo-1"
+resource "proxmox_vm_qemu" "ksrv_demo_1" {
+  name        = "ksrv-demo-1"
   desc        = "-Kube node demo 1-"
   agent       = 1
   target_node = "prox"
