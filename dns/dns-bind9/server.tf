@@ -180,3 +180,10 @@ resource "dns_a_record_set" "antsrv_demo_1" {
   addresses = ["10.10.10.41"]
   ttl       = 3600
 }
+
+resource "dns_a_record_set" "wildcard_antsrv_demo_1" {
+  zone      = "home.unixvextor.com."
+  name      = "*.antsrv-demo-1"
+  addresses = ["10.10.10.41"]
+  ttl       = 3600
+}
