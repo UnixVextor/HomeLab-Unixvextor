@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "antsrv-demo-1" {
   name        = "antsrv-demo-1"
   desc        = "-Ant media streaming server-"
-  agent       = 0
+  agent       = 1
   target_node = "prox"
   qemu_os     = "other"
   bios        = "seabios"
