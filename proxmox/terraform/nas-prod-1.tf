@@ -5,13 +5,13 @@ resource "proxmox_vm_qemu" "nas-prod-1" {
   target_node = "prox"
   qemu_os     = "126"
   # bios        = "ovmf"
-  tags        = "nas,production"
+  tags = "nas,production"
 
   full_clone = false
   # -- boot process -- 
-  onboot           = true 
+  onboot           = true
   startup          = "order=1,up=10"
-  automatic_reboot = false 
+  automatic_reboot = false
 
   cores   = 2
   sockets = 1
@@ -27,14 +27,14 @@ resource "proxmox_vm_qemu" "nas-prod-1" {
   scsihw   = "virtio-scsi-pci" # default virtio-scsi-pci
   bootdisk = "scsi0"
 
-    # disk {
-    #   slot = 0
-    #   size      = "30G"
-    #   type      = "scsi"
-    #   storage   = "local-zfs"
-    #   cache     = "writeback"
-    #   discard   = "on"
-    # }
+  # disk {
+  #   slot = 0
+  #   size      = "30G"
+  #   type      = "scsi"
+  #   storage   = "local-zfs"
+  #   cache     = "writeback"
+  #   discard   = "on"
+  # }
 
   lifecycle {
     ignore_changes = [
