@@ -1,15 +1,16 @@
 resource "proxmox_vm_qemu" "nas-prod-1" {
-  name        = "nas-demo-1"
-  desc        = "-Nas Unraid-"
+  name        = "nas-prod-1"
+  desc        = "Nas Production Server, Unraid"
   agent       = 1
   target_node = "prox"
-  qemu_os     = "other"
-  bios        = "ovmf"
+  qemu_os     = "126"
+  # bios        = "ovmf"
   tags        = "nas,production"
 
+  full_clone = false
   # -- boot process -- 
-  onboot           = false
-  startup          = ""
+  onboot           = true 
+  startup          = "order=1,up=10"
   automatic_reboot = false 
 
   cores   = 2
