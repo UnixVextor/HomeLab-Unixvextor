@@ -15,7 +15,7 @@ jobs:
 
                - name: Copy docker-compose.yaml
                  run: |
-                      cp -r sonarqube-notification /home/unixvextor/sonarqube-notification
+                      cp sonarqube-notification/* /home/unixvextor/sonarqube-notification/*
                
                - name: Clear Old Docker Container
                  run: |
