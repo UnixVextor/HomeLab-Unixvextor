@@ -11,7 +11,7 @@ services:
       traefik.enable: "true"
       traefik.http.middlewares.sonarqube-srv-auth.basicauth.users: "admin:$$2y$$10$$u9Nh8A5IEwfHquo2.052jeACWwh/8Sy8l4nEt5BmdKUJW5t/CmpVi"
       traefik.http.services.sonarqube-srv.loadbalancer.server.port: "3000"
-      traefik.http.routers.traefik-secure.middlewares: "sonarqube-srv-auth"
+      traefik.http.routers.sonarqube-srv-https.middlewares: "sonarqube-srv-auth"
       traefik.http.services.sonarqube-srv.loadbalancer.server.scheme: "http"
       traefik.http.routers.sonarqube-srv-https.entrypoints: "websecure"
       traefik.http.routers.sonarqube-srv-https.rule: "Host(`sonarqube-noti-srv.srv-prod-1.home.unixvextor.com`)"
