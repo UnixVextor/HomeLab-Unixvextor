@@ -1,0 +1,28 @@
+name: Update Sonarqube Notification Docker Container
+
+on:
+     push:
+          branches:
+               - main
+          paths:
+               - 'sonarqube-notification/*'
+jobs:
+     deploy:
+          runs-on: "self-hosted"
+          steps:
+               - name: Checkout
+                 uses: actions/checkout@v2
+
+               - name: Copy docker-compose.yaml
+                 run: |
+                      cp -r sonarqube-notification /home/unixvextor/sonarqube-notification
+               
+               - name: Clear Old Docker Container
+                 run: |
+                      docker stop sonarqube-notification-srv || true
+                      docker rm sonarqube-send-notification-srv || true
+
+               - name: Build Image And Run Docker Container
+                 run: |
+                      cd /home/unixvextor/sonarqube-notification/
+                      docker compose up -d
