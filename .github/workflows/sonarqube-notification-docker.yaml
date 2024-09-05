@@ -13,15 +13,12 @@ jobs:
                - name: Checkout
                  uses: actions/checkout@v2
 
-               - name: Change Directory
-                 run: |
-                      cd sonarqube-notification
-               
                - name: Clear Old Docker Container
                  run: |
-                      docker stop sonarqube-notification-srv || true
+                      docker stop sonarqube-send-notification-srv || true
                       docker rm sonarqube-send-notification-srv || true
 
                - name: Build Image And Run Docker Container
                  run: |
+                      cd sonarqube-notification 
                       docker compose up -d

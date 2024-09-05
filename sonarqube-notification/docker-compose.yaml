@@ -23,4 +23,3 @@ networks:
     external: true
   frontend:
     external: true
-    
