@@ -12,7 +12,7 @@ services:
       traefik.http.services.sonarqube-srv.loadbalancer.server.port: "3000"
       traefik.http.services.sonarqube-srv.loadbalancer.server.scheme: "http"
       traefik.http.routers.sonarqube-srv-https.entrypoints: "websecure"
-      traefik.http.routers.sonarqube-srv-https.rule: "Host(`sonarqube-noti-srv.srv-demo-1.home.unixvextor.com`)"
+      traefik.http.routers.sonarqube-srv-https.rule: "Host(`sonarqube-noti-srv.srv-prod-1.home.unixvextor.com`)"
       traefik.http.routers.sonarqube-srv-https.tls: "true"
       traefik.http.routers.sonarqube-srv-https.tls.certresolver: "cloudflare"
     networks:
