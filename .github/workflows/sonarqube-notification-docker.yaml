@@ -13,9 +13,9 @@ jobs:
                - name: Checkout
                  uses: actions/checkout@v2
 
-               - name: Copy docker-compose.yaml
+               - name: Change Directory
                  run: |
-                      cp sonarqube-notification/* /home/unixvextor/sonarqube-notification/
+                      cd sonarqube-notification
                
                - name: Clear Old Docker Container
                  run: |
@@ -24,5 +24,4 @@ jobs:
 
                - name: Build Image And Run Docker Container
                  run: |
-                      cd /home/unixvextor/sonarqube-notification/
                       docker compose up -d
