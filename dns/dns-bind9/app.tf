@@ -14,3 +14,13 @@ resource "dns_a_record_set" "db_prod_2" {
   ]
   ttl = 3600
 }
+
+resource "dns_a_record_set" "db_demo_2" {
+  zone = "home.unixvextor.com."
+  name = "db-demo-2"
+  addresses = [
+    "10.10.10.246"
+  ]
+  ttl = 3600
+}
+
