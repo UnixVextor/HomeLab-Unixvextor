@@ -188,13 +188,13 @@ resource "dns_a_record_set" "wildcard_antsrv_demo_1" {
   ttl       = 3600
 }
 
-resource "dns_a_record_set" "wildcard_antsrv_demo_1" {
+resource "dns_a_record_set" "learnify_srv" {
   zone      = "home.unixvextor.com."
   name      = "learnify"
   addresses = ["10.10.10.245"]
   ttl       = 3600
 }
-resource "dns_a_record_set" "wildcard_antsrv_demo_1" {
+resource "dns_a_record_set" "wildcard_learnify_srv" {
   zone      = "home.unixvextor.com."
   name      = "*.learnify"
   addresses = ["10.10.10.245"]
